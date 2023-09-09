@@ -88,7 +88,7 @@ mod parent {
             if let Some(_) = self.child {
                 panic!("child already created!")
             }
-            // Creating FeeVault component
+            // Creating Child component
             let package_badge_bucket = self.mint_package_badge(Decimal::ONE);
             let fee_vault_component = Blueprint::<Child>::new(package_badge_bucket);
             self.child = Some(fee_vault_component);
