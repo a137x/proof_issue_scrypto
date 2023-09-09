@@ -1,0 +1,28 @@
+[package]
+name = "proof_issue_scrypto"
+version = "0.12.1"
+edition = "2021"
+
+[dependencies]
+sbor = { git = "https://github.com/radixdlt/radixdlt-scrypto", tag = "v0.12.1" }
+scrypto = { git = "https://github.com/radixdlt/radixdlt-scrypto", tag = "v0.12.1" }
+
+
+[dev-dependencies]
+radix-engine = { git = "https://github.com/radixdlt/radixdlt-scrypto", tag = "v0.12.1" }
+# radix-engine-store-interface = { git = "https://github.com/radixdlt/radixdlt-scrypto", tag = "v0.12.1"  }
+# radix-engine-stores = { git = "https://github.com/radixdlt/radixdlt-scrypto", tag = "v0.12.1"  }
+transaction = { git = "https://github.com/radixdlt/radixdlt-scrypto", tag = "v0.12.1" }
+scrypto-unit = { git = "https://github.com/radixdlt/radixdlt-scrypto", tag = "v0.12.1" }
+
+[profile.release]
+opt-level = 'z'     # Optimize for size.
+lto = true          # Enable Link Time Optimization.
+codegen-units = 1   # Reduce number of codegen units to increase optimizations.
+panic = 'abort'     # Abort on panic.
+strip = true
+overflow-checks = true # Panic in the case of an overflow. 
+incremental = true # Enable
+
+[lib]
+crate-type = ["cdylib", "lib"]
